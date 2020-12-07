@@ -16,12 +16,19 @@ if day.nil? || day >= 6
     end
 
     puts "Could not find day #{day}, part #{part}"
-    exit
+    exit 1
+  end
+
+  input_filename = "#{File.dirname(__FILE__)}/inputs/#{sprintf('%02d', day)}.txt"
+
+  unless File.exists?(input_filename)
+    puts "Could not find input for day #{day}"
+    exit 1
   end
 
   input =
     File
-      .read("#{File.dirname(__FILE__)}/inputs/#{sprintf('%02d', day)}.txt")
+      .read(input_filename)
       .lines
       .map(&:strip)
 
