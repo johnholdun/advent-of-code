@@ -9,6 +9,6 @@ class Response
         end
       end
 
-    elves.map(&:sum).max
+    elves.map(&:sum).sort.last(3).sum
   end
 end
