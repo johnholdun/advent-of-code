@@ -23,6 +23,6 @@ input =
   File
     .read(input_filename)
     .lines
-    .map(&:strip)
+    .map(&:rstrip)
 
 puts Response.new.call(input)
