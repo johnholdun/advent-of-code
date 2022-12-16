@@ -2,7 +2,6 @@ require 'set'
 
 class Response
   CHECK_Y = 2000000
-  # CHECK_Y = 10
 
   def call(input)
     ranges = []
@@ -14,10 +13,10 @@ class Response
       x1, y1, x2, y2 = line.scan(/[xy]=(-?\d+)/).flatten.map(&:to_i)
       beacons.add([x2, y2])
       distance = (x1 - x2).abs + (y1 - y2).abs
-      target_y = y1 + distance * (CHECK_Y > y1 ? 1 : -1)
-      width = (target_y - CHECK_Y).abs * 2 - 1
-      delta = (width - 1) / 2 + 1
-      ranges.push([x1 - delta, x1 + delta])
+      vertical_distance = (CHECK_Y - y1).abs
+      next if vertical_distance > distance
+      width = (vertical_distance - distance).abs
+      ranges.push([x1 - width, x1 + width])
     end
 
     # collapse overlapping ranges
