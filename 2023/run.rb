@@ -14,7 +14,7 @@ end
 
 input_filename = "#{File.dirname(__FILE__)}/inputs/#{slug[0, 2]}.txt"
 
-unless File.exists?(input_filename)
+unless File.exist?(input_filename)
   puts "Could not find input for slug #{slug}"
   exit 1
 end
