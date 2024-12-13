@@ -25,11 +25,11 @@ class Response
     # following lol
     # i probably learned how to do this in high school
 
-    b = (py * ax - px * ay) / (by * ax - bx * ay)
-    a = (px - b * bx) / ax
+    b = (py * ax - px * ay) / (by * ax - bx * ay).to_f
+    a = (px - b * bx) / ax.to_f
 
-    if a * ax + b * bx == px && a * ay + b * by == py
-      3 * a + b
+    if a.round == a && b.round == b
+      (3 * a + b).to_i
     end
   end
 end
